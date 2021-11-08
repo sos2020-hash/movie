@@ -1,7 +1,7 @@
 <template>
   <div class="list-item-container">
     <div class="img-container">
-      <img v-bind:src="movie.poster" alt="{{movie.name}}" />
+      <img :src="movie.poster ? movie.poster : image" :alt="movie.name" />
     </div>
     <div class="movie-rating-container">
       <div class="rating">{{ movie.rating.toFixed(1) }}</div>
@@ -18,16 +18,17 @@
     <div class="movie-info-container">
       <h2>{{ movie.name }}</h2>
       <div class="movie-info-comment">
-        <div><i class="far fa-heart"></i>{{ movie.likeCount }}</div>
-        <div><i class="far fa-comment-alt"></i>{{ movie.reviewCount }}</div>
+        <div><i class="far fa-heart"></i><span class="text">{{ movie.likeCount }}</span></div>
+        <div><i class="far fa-comment-alt"></i><span class="text">{{ movie.reviewCount }}</span></div>
       </div>
-      <div>{{ new Date(movie.openDate).toLocaleDateString() }}</div>
+      <div>{{ formatDate(new Date(movie.openDate)) }}</div>
     </div>
   </div>
 </template>
 
 <script>
 import StarRating from "vue-star-rating";
+import image from "../assets/no-poster-available.png";
 
 export default {
   name: "MovieList",
@@ -35,6 +36,23 @@ export default {
     movie: Object,
   },
   components: { StarRating },
+  data() {
+    return { image: image };
+  },
+  methods: {
+    formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+    return [year + "年", month + "月", day + "日"].join('');
+}
+  }
 };
 </script>
 
@@ -91,5 +109,9 @@ h3 {
 
 .far {
   margin-right: 5px;
+}
+
+.text {
+  color: gold;
 }
 </style>

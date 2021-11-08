@@ -1,7 +1,7 @@
 <template>
   <div class="grid-item">
     <div class="img-container">
-      <img v-bind:src="movie.poster" alt="{{movie.name}}" />
+      <img :src="movie.poster ? movie.poster : image" :alt="movie.name" />
     </div>
     <div>
       <h3>{{ movie.name }}</h3>
@@ -9,13 +9,13 @@
     <div>
       <ul class="movie-status">
         <li>
-          <i class="far fa-star">{{ movie.rating.toFixed(1) }}</i>
+          <i class="far fa-star"><span class="info">{{ movie.rating.toFixed(1) }}</span></i>
         </li>
         <li>
-          <i class="far fa-heart">{{ movie.likeCount }}</i>
+          <i class="far fa-heart"><span class="info">{{ movie.likeCount }}</span></i>
         </li>
         <li>
-          <i class="far fa-comment-alt">{{ movie.reviewCount }}</i>
+          <i class="far fa-comment-alt"><span class="info">{{ movie.reviewCount }}</span></i>
         </li>
       </ul>
     </div>
@@ -23,10 +23,17 @@
 </template>
 
 <script>
+import image from "../assets/no-poster-available.png";
+
 export default {
   name: "MovieGrid",
   props: {
     movie: Object,
+  },
+  data() {
+    return {
+      image: image,
+    };
   },
 };
 </script>
@@ -39,6 +46,7 @@ img {
 
 .grid-item {
   padding: 10px;
+  max-width: 15rem;
 }
 
 .movie-status {
@@ -49,5 +57,9 @@ img {
 
 .movie-status li {
   margin-right: 10px;
+}
+
+.info {
+  color: gold;
 }
 </style>

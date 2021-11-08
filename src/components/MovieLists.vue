@@ -1,15 +1,18 @@
 <template>
   <button @click="onSwitch" class="btn"><i class="fas fa-th"></i></button>
+<transition name="fade">
   <div v-if="isGrid" class="grid-container">
     <div :key="movie.uuid" v-for="movie in movies">
-      <MovieGrid :movie="movie" />
+        <MovieGrid :movie="movie" />
     </div>
-  </div>
+  </div>       
+
   <div v-else class="list-container">
     <div :key="movie.uuid" v-for="movie in movies">
-      <MovieList :movie="movie" />
+        <MovieList :movie="movie" />
     </div>
-  </div>
+  </div>   
+</transition>
 </template>
 
 <script>
@@ -41,11 +44,13 @@ export default {
 <style scoped>
 .grid-container {
   display: grid;
+  flex-wrap: wrap;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
 .list-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
 }
 
@@ -54,7 +59,7 @@ export default {
   display: inline-flex;
   width: 180px;
   height: 55px;
-  margin: 0 15px;
+  margin: 15px 15px;
   perspective: 1000px;
   cursor: pointer;
 }
@@ -90,5 +95,12 @@ export default {
 }
 .btn i:hover {
   transform: translateZ(-25px) rotateX(-90deg);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .8s;
+}
+.fade-enter, .fade-leave-to  {
+  opacity: 0;
 }
 </style>
