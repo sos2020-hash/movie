@@ -44,13 +44,11 @@ export default {
 <style scoped>
 .grid-container {
   display: grid;
-  flex-wrap: wrap;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
 .list-container {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
 }
 

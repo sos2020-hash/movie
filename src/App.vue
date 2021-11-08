@@ -22,9 +22,9 @@ export default {
     try {
       const url = "https://jsonkeeper.com/b/WTPZ";
       const response = await fetch(url, {
-        headers: {
-          'Access-Control-Allow-Origin': 'https://jsonkeeper.com/b/WTPZ'
-        }
+        // headers: {
+        //   'Access-Control-Allow-Origin': '*'
+        // }
 });
       if (response.ok) {
         this.movies = await response.json();
@@ -33,6 +33,7 @@ export default {
       console.log(error);
     }
   },
+  // It worked when hadn't blocked by cors
 };
 </script>
 
@@ -44,6 +45,5 @@ body {
   text-align: center;
   background: black;
   color: whitesmoke;
-  margin-top: 60px;
 }
 </style>

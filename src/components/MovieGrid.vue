@@ -4,7 +4,7 @@
       <img :src="movie.poster ? movie.poster : image" :alt="movie.name" />
     </div>
     <div>
-      <h3>{{ movie.name }}</h3>
+      <h4 class="name">{{ movie.name }}</h4>
     </div>
     <div>
       <ul class="movie-status">
@@ -46,17 +46,22 @@ img {
 
 .grid-item {
   padding: 10px;
-  max-width: 15rem;
+  max-width: 12rem;
 }
 
 .movie-status {
   display: flex;
   justify-content: space-evenly;
   list-style-type: none;
+  padding: 0;
 }
 
 .movie-status li {
   margin-right: 10px;
+}
+
+.name {
+  margin: 10px;
 }
 
 .info {

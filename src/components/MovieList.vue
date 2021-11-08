@@ -67,28 +67,29 @@ img {
   max-height: 10rem;
 }
 
-.list-item-container .img-container {
+.img-container {
   flex: 1;
 }
 
-.list-item-container .movie-rating-container {
+.movie-rating-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex: 1;
+  border-bottom: gray 1.5px solid;
 }
 
-.list-item-container .movie-info-container {
+.movie-info-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   flex: 3;
+  border-bottom: gray 1.5px solid;
 }
 
-.movie-info-container div,
-h3 {
+.movie-info-container div,h2 {
   margin: 5px;
 }
 
@@ -100,11 +101,12 @@ h3 {
 .rating {
   color: gold;
   font-size: 4rem;
-  padding: 20px;
+  font-weight: 700;
+  padding: 0 20px;
 }
 
 .rating-bar {
-  padding: 20px 10px;
+  padding: 0 10px;
 }
 
 .far {
@@ -113,5 +115,6 @@ h3 {
 
 .text {
   color: gold;
+  margin-right: 10px;
 }
 </style>
